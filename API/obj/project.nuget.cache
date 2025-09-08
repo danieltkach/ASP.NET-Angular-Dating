@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "vJ1/mTcpYU0=",
+  "success": true,
+  "projectFilePath": "/Users/code-witcher/Udemy/ASP.net Core and Angular/practice/API/API.csproj",
+  "expectedPackageFiles": [
+    "/Users/code-witcher/.nuget/packages/microsoft.aspnetcore.openapi/9.0.8/microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "/Users/code-witcher/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
