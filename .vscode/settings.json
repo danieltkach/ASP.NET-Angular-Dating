@@ -1,1 +1,17 @@
-{}
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "sqlite",
+            "database": "dating.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "API/dating.db",
+            "name": "sqlite"
+        }
+    ]
+}
