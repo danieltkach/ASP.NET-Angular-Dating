@@ -1,5 +1,3 @@
-using System.Security.AccessControl;
-
 namespace API.Entities;
 
 public class AppUser
