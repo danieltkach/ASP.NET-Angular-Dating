@@ -4,6 +4,7 @@ import { AccountService } from '../../core/services/account-service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 // import { ToastService } from '../../core/services/toast-service';
 import { themes } from '../theme';
+import { ToastService } from '../../core/services/toast-service';
 // import { BusyService } from '../../core/services/busy-service';
 // import { HasRole } from '../../shared/directives/has-role';
 
@@ -19,7 +20,7 @@ export class Nav implements OnInit {
   protected accountService = inject(AccountService);
   // protected busyService = inject(BusyService);
   private router = inject(Router);
-  // private toast = inject(ToastService);
+  private toast = inject(ToastService);
   protected creds: any = {};
   protected selectedTheme = signal<string>(localStorage.getItem('theme') || 'light');
   protected themes = themes;
@@ -48,12 +49,11 @@ export class Nav implements OnInit {
     this.accountService.login(this.creds).subscribe({
       next: () => {
         this.router.navigateByUrl('/members');
-        // this.toast.success('Logged in successfully');
+        this.toast.success('Logged in successfully');
         this.creds = {};
       },
       error: error => {
-        // this.toast.error(error.error);
-        alert(error.message);
+        this.toast.error(error.error);
       },
       complete: () => this.loading.set(false)
     });
