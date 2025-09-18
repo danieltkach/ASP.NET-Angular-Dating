@@ -23,7 +23,7 @@ export class AccountService {
         tap(user => {
           if (user) {
             this.setCurrentUser(user);
-            this.startTokenRefreshInterval();
+            // this.startTokenRefreshInterval();
           }
         })
       );
@@ -34,9 +34,8 @@ export class AccountService {
       { withCredentials: true }).pipe(
         tap(user => {
           if (user) {
-            localStorage.setItem('user', JSON.stringify(user));
             this.setCurrentUser(user);
-            this.startTokenRefreshInterval();
+            // this.startTokenRefreshInterval();
           }
         })
       );
@@ -74,8 +73,9 @@ export class AccountService {
   }
 
   setCurrentUser(user: User) {
-    user.roles = this.getRolesFromToken(user);
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUser.set(user);
+    // user.roles = this.getRolesFromToken(user);
     // this.likesService.getLikeIds();
     // if (this.presenceService.hubConnection?.state !== HubConnectionState.Connected) {
     //   this.presenceService.createHubConnection(user);

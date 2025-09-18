@@ -2,13 +2,15 @@
   <div class="card-title justify-center text-3xl text-primary">Sign up</div>
   <div class="card-body w-full">
 
-    <form #registerForm="ngForm" class="flex flex-col gap-4 w-full steps" (ngSubmit)="register()">
-      <input class="mt-2" label="Email" name="email" [(ngModel)]="creds.email" />
-      <input label="Display name" name="displayName" [(ngModel)]="creds.displayName" />
-      <input type="password" label="Password" name="password" [(ngModel)]="creds.password" />
+    <form #registerForm="ngForm" class="flex flex-col gap-4 w-full steps items-center" (ngSubmit)="register()">
+      <input class="input mt-2" label="Email" name="email" [(ngModel)]="creds.email" placeholder="email" />
+      <input class="input" label="Display name" name="displayName" [(ngModel)]="creds.displayName"
+        placeholder="display name" />
+      <input class="input" type="password" label="Password" name="password" [(ngModel)]="creds.password"
+        placeholder="password" />
 
       <div class="flex items-center justify-end gap-3">
-        <button class="btn">Cancel</button>
+        <button class="btn" (click)="cancel()" type="button">Cancel</button>
         <button class="btn btn-primary" type="submit">Register</button>
         <!-- <button [disabled]="!credentialsForm.valid" (click)="nextStep()" class="btn btn-primary" type="button">Next</button> -->
       </div>

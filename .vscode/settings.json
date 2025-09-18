@@ -13,5 +13,20 @@
             "database": "API/dating.db",
             "name": "sqlite"
         }
-    ]
+    ],
+    "[html]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": null,
+        "prettier.enable": false
+    },
+    "html.format.enable": false,
+    "html.format.preserveNewLines": true,
+    "html.format.maxPreserveNewLines": 10,
+    "files.trimTrailingWhitespace": false,
+    "prettier.enable": false,
+    "prettier.disableLanguages": ["html"],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": false,
+        "source.organizeImports": false
+    }
 }

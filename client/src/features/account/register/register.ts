@@ -1,9 +1,7 @@
-import { Component, inject, output, signal } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { RegisterCreds } from '../../../types/user';
+import { Component, inject, output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RegisterCreds, User } from '../../../types/user';
 import { AccountService } from '../../../core/services/account-service';
-import { TextInput } from "../../../shared/text-input/text-input";
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,13 +10,22 @@ import { Router } from '@angular/router';
   styleUrl: './register.css'
 })
 export class Register {
+  private accountService = inject(AccountService);
+  cancelRegister = output<boolean>();
   protected creds = {} as RegisterCreds;
 
   register() {
-    console.log(this.creds);
+    this.accountService.register(this.creds).subscribe({
+      next: response => {
+        console.log(response);
+        this.cancel();
+      },
+      error: error => console.error(error)
+    }
+    );
   }
 
   cancel() {
-    console.log('canceled');
+    this.cancelRegister.emit(false);
   }
 }
