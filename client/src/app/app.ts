@@ -5,10 +5,11 @@ import { Nav } from "../layout/nav/nav";
 import { Home } from "../features/home/home";
 import { AccountService } from '../core/services/account-service';
 import { User } from '../types/user';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Nav, Home],
+  imports: [Nav, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -17,6 +18,7 @@ export class App implements OnInit {
   private http = inject(HttpClient);
   protected title = 'Dating App';
   protected members = signal<User[]>([]);
+  protected router = inject(Router);
 
   async ngOnInit() {
     this.members.set(await this.getMembers());
