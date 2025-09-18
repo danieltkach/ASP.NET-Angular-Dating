@@ -24,7 +24,6 @@ export class Nav implements OnInit {
   protected selectedTheme = signal<string>(localStorage.getItem('theme') || 'light');
   protected themes = themes;
   protected loading = signal(false);
-  protected loggedIn = signal(false);
 
 
   ngOnInit(): void {
@@ -51,7 +50,6 @@ export class Nav implements OnInit {
         this.router.navigateByUrl('/members');
         // this.toast.success('Logged in successfully');
         this.creds = {};
-        this.loggedIn.set(true);
       },
       error: error => {
         // this.toast.error(error.error);
@@ -62,8 +60,7 @@ export class Nav implements OnInit {
   }
 
   logout() {
-    // this.accountService.logout();
-    this.loggedIn.set(false);
+    this.accountService.logout();
     this.router.navigateByUrl('/');
   }
 }
