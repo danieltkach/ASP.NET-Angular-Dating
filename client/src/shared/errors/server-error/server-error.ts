@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiError } from '../../../types/error';
 
@@ -15,7 +15,7 @@ export class ServerError {
 
   constructor() {
     const navigation = this.router.getCurrentNavigation();
-    this.error = navigation?.extras?.state?.['error']
+    this.error = navigation?.extras?.state?.['error'];
   }
 
   detailsToggle() {

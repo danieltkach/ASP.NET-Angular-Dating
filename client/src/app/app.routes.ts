@@ -23,6 +23,6 @@ export const routes: Routes = [
     ]
   },
   { path: 'errors', component: TestErrors },
-  { path: 'server-errors', component: ServerError },
+  { path: 'server-error', component: ServerError },
   { path: '**', component: NotFound }
 ];
