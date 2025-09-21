@@ -28,5 +28,38 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": false,
         "source.organizeImports": false
-    }
+    },
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "editor.quickSuggestionsDelay": 10,
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    "editor.suggest.localityBonus": true,
+    "editor.suggest.showMethods": true,
+    "editor.suggest.showFunctions": true,
+    "editor.suggest.showConstructors": true,
+    "editor.suggest.showFields": true,
+    "editor.suggest.showVariables": true,
+    "editor.suggest.showClasses": true,
+    "editor.suggest.showStructs": true,
+    "editor.suggest.showInterfaces": true,
+    "editor.suggest.showModules": true,
+    "editor.suggest.showProperties": true,
+    "editor.suggest.showKeywords": true,
+    "editor.suggest.showSnippets": true,
+    "editor.parameterHints.enabled": true,
+    "editor.suggest.showStatusBar": true,
+    "typescript.suggest.autoImports": true,
+    "typescript.suggest.enabled": true,
+    "typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "editor.suggest.insertMode": "insert",
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.tabCompletion": "on",
+    "typescript.validate.enable": true,
+    "typescript.preferences.useLabelDetailsInCompletionEntries": true
 }
