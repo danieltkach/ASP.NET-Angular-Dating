@@ -12,9 +12,11 @@ public class MemberRepository(AppDbContext context) : IMemberRepository
         .FindAsync(id);
     }
 
-    public Task<Member?> GetMemberForUpdate(string id)
+    public async Task<Member?> GetMemberForUpdate(string id)
     {
-        throw new NotImplementedException();
+        return await context.Members
+            .Include(x => x.User)
+            .SingleOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<IReadOnlyList<Member>> GetMembersAsync()
