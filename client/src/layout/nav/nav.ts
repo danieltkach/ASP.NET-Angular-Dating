@@ -4,7 +4,7 @@ import { AccountService } from '../../core/services/account-service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { themes } from '../theme';
 import { ToastService } from '../../core/services/toast-service';
-// import { BusyService } from '../../core/services/busy-service';
+import { BusyService } from '../../core/services/busy-service';
 // import { HasRole } from '../../shared/directives/has-role';
 
 @Component({
@@ -17,7 +17,7 @@ import { ToastService } from '../../core/services/toast-service';
 })
 export class Nav implements OnInit {
   protected accountService = inject(AccountService);
-  // protected busyService = inject(BusyService);
+  protected busyService = inject(BusyService);
   private router = inject(Router);
   private toast = inject(ToastService);
   protected creds: any = {};
