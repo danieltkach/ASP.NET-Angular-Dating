@@ -1,3 +1,4 @@
+using System.CodeDom;
 using System.Security.Cryptography;
 using System.Text;
 using API.Data;
@@ -24,8 +25,19 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
             DisplayName = registerDto.DisplayName,
             Email = registerDto.Email,
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-            PasswordSalt = hmac.Key
+            PasswordSalt = hmac.Key,
+            Member = new Member
+            {
+                Id = Guid.NewGuid().ToString(),
+                DisplayName = registerDto.DisplayName,
+                Gender = registerDto.Gender,
+                DateOfBirth = registerDto.DateOfBirth,
+                City = registerDto.City,
+                Country = registerDto.Country
+            }
         };
+
+        user.Member.Id = user.Id;
 
         context.Users.Add(user);
         await context.SaveChangesAsync();

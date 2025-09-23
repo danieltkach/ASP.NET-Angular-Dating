@@ -5,7 +5,6 @@ import { ControlValueAccessor, FormControl, NgControl, ReactiveFormsModule } fro
   selector: 'app-text-input',
   imports: [ReactiveFormsModule],
   templateUrl: './text-input.html',
-  styleUrl: './text-input.css'
 })
 export class TextInput implements ControlValueAccessor {
   label = input<string>('');
