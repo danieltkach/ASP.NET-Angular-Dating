@@ -5,14 +5,12 @@ import { Member, Photo } from '../../../types/member';
 import { ImageUpload } from "../../../shared/image-upload/image-upload";
 import { AccountService } from '../../../core/services/account-service';
 import { User } from '../../../types/user';
-// import { StarButton } from "../../../shared/star-button/star-button";
-// import { DeleteButton } from "../../../shared/delete-button/delete-button";
+import { StarButton } from "../../../shared/star-button/star-button";
+import { DeleteButton } from "../../../shared/delete-button/delete-button";
 
 @Component({
   selector: 'app-member-photos',
-  imports: [ImageUpload,
-    // StarButton, DeleteButton
-    ],
+  imports: [ImageUpload, StarButton, DeleteButton],
   templateUrl: './member-photos.html',
 })
 export class MemberPhotos implements OnInit {
@@ -43,7 +41,7 @@ export class MemberPhotos implements OnInit {
         }
       },
       error: error => {
-        console.error('Error uploading image: ', error);
+        console.log('Error uploading image: ', error);
         this.loading.set(false);
       }
     })
