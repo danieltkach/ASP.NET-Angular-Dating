@@ -12,9 +12,10 @@ namespace API.Controllers
     public class MembersController(IMemberRepository memberRepository, IPhotoService photoService) : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Member>>> GetMembers([FromQuery]PagingParams pagingParams)
+        public async Task<ActionResult<IReadOnlyList<Member>>> GetMembers([FromQuery]MemberParams memberParams)
         {
-            return Ok(await memberRepository.GetMembersAsync(pagingParams));
+            memberParams.CurrentMemberId = User.GetMemberId();
+            return Ok(await memberRepository.GetMembersAsync(memberParams));
         }
 
         [HttpGet("{id}")]
@@ -28,7 +29,8 @@ namespace API.Controllers
         [HttpGet("{id}/photos")]
         public async Task<ActionResult<IReadOnlyList<Photo>>> GetMemberPhotos(string id)
         {
-            return Ok(await memberRepository.GetPhotosForMemberAsync(id));
+            var isCurrentUser = User.GetMemberId() == id;
+            return Ok(await memberRepository.GetPhotosForMemberAsync(id, isCurrentUser));
         }
 
         [HttpPut]
