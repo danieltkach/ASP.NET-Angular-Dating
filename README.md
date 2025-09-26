@@ -54,28 +54,79 @@ practice/
 - JWT token-based authentication
 - Password hashing and salting
 - Secure token validation
+- User activity tracking
 
-### API Endpoints
-- Account management (registration/login)
-- Members management
-- Weather forecast (sample endpoint)
-- RESTful API design with base controller
+### Core Functionality
+- **Member Profiles**: Complete user profiles with photos, location, and personal information
+- **Photo Management**: Upload, set main photo, and delete photos via Cloudinary integration
+- **Pagination System**: Efficient data loading with configurable page sizes and navigation
+- **Advanced Filtering**: Filter members by age range, gender, and activity status
+- **Like System**: Many-to-many relationship for member likes/dislikes
+- **Messaging System**: Real-time messaging between members
 
-### Frontend Features
-- Modern Angular 20 with standalone components
-- Responsive design with Tailwind CSS and DaisyUI
-- SSL-enabled development server
-- TypeScript strict mode enabled
-- Optimized build configuration
+### API Architecture
+- RESTful API design with repository pattern
+- Advanced Entity Framework relationships (one-to-one, one-to-many, many-to-many)
+- Custom pagination with metadata (page count, total records, etc.)
+- Action filters for automatic user activity logging
+- Comprehensive error handling middleware
+- Photo upload integration with Cloudinary
+
+### Frontend Architecture
+- **Modern Angular 20** with standalone components and signals
+- **Component Communication**: Parent-child communication with events and ViewChild
+- **HTTP Interceptors**: Automatic loading states and request caching
+- **Custom Pipes**: Time-ago formatting and other data transformations
+- **Reactive Forms**: Form validation and dynamic user inputs
+- **Modal Management**: Filter modals with native HTML5 dialog elements
+- **State Management**: Local state with signals and persistent localStorage
 
 ## Database Schema
 
-### AppUser Entity
+### Core Entities
+
+#### AppUser Entity
 - `Id`: Unique identifier (GUID)
 - `DisplayName`: User's display name
 - `Email`: User's email address
 - `PasswordHash`: Hashed password
 - `PasswordSalt`: Password salt for security
+- `ImageUrl`: Profile image URL
+- One-to-one relationship with Member
+
+#### Member Entity
+- `Id`: Links to AppUser ID
+- `DisplayName`: Member's display name
+- `DateOfBirth`: Date of birth for age calculation
+- `Gender`: Member's gender
+- `City`, `Country`: Location information
+- `Description`: Member bio/description
+- `Created`, `LastActive`: Timestamp tracking
+- `ImageUrl`: Profile photo URL
+- One-to-many relationship with Photos
+- Many-to-many relationships for Likes and Messages
+
+#### Photo Entity
+- `Id`: Unique identifier
+- `Url`: Cloudinary image URL
+- `PublicId`: Cloudinary public ID for deletion
+- `MemberId`: Foreign key to Member
+- Many-to-one relationship with Member
+
+#### MemberLike Entity (Junction Table)
+- `SourceMemberId`: Member who liked
+- `TargetMemberId`: Member who was liked
+- Composite primary key on both IDs
+- Many-to-many relationship between Members
+
+#### Message Entity
+- `Id`: Unique identifier
+- `SenderId`: Member who sent the message
+- `RecipientId`: Member who received the message
+- `Content`: Message text content
+- `DateSent`: Timestamp of message
+- `DateRead`: Timestamp when read (nullable)
+- Foreign key relationships to Member entity
 
 ## Development Setup
 
