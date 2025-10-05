@@ -3,7 +3,9 @@
     "allow": [
       "Bash(git config:*)",
       "Bash(git rm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --env-filter 'if [ \"\"$GIT_COMMIT\"\" = \"\"3986fd6e65efe3d7a2c5a0aee0bdb854840aa8d4\"\" ]; then export GIT_AUTHOR_EMAIL=\"\"danieltkach@gmail.com\"\"; export GIT_COMMITTER_EMAIL=\"\"danieltkach@gmail.com\"\"; fi' -- b2a0343..HEAD)",
+      "Bash(git clean:*)"
     ],
     "deny": [],
     "ask": []
