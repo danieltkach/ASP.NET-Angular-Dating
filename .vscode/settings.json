@@ -26,8 +26,8 @@
     "prettier.enable": false,
     "prettier.disableLanguages": ["html"],
     "editor.codeActionsOnSave": {
-        "source.fixAll": false,
-        "source.organizeImports": false
+        "source.fixAll": "never",
+        "source.organizeImports": "never"
     },
     "editor.quickSuggestions": {
         "other": true,
